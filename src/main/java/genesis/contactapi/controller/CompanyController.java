@@ -32,9 +32,9 @@ public class CompanyController {
     }
 
     @PutMapping("/company/{companyId}")
-    public ResponseEntity<CompanyDto> updateCompany(@RequestBody CompanyDto companyDto,
-                                                    @PathVariable("companyId")Long companyId) {
-        CompanyDto updatedCompanyDto = dtoMapperService.mapToCompanyDto(companyService.updateCompany(dtoMapperService.mapDtoCompanyToCompany(companyDto),companyId));
+    public ResponseEntity<CompanyDto> updateCompany(@Valid @RequestBody CompanyDto companyDto,
+                                                    @PathVariable("companyId") Long companyId) {
+        CompanyDto updatedCompanyDto = dtoMapperService.mapToCompanyDto(companyService.updateCompany(dtoMapperService.mapDtoCompanyToCompany(companyDto), companyId));
         return new ResponseEntity<>(updatedCompanyDto, HttpStatus.OK);
     }
 
